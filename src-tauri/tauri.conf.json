@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Kdrive",
+  "version": "../package.json",
+  "identifier": "vn.kdrive.desktop",
+  "build": {
+    "beforeDevCommand": "npm run dev",
+    "devUrl": "http://localhost:1420",
+    "beforeBuildCommand": "npm run build",
+    "frontendDist": "../dist"
+  },
+  "app": {
+    "windows": [],
+    "security": {
+      "csp": null
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": "all",
+    "category": "Productivity",
+    "shortDescription": "Unlimited cloud drive powered by Discord",
+    "longDescription": "Kdrive stores your files in your own Discord server: upload any file, preview it, organize it into folders and share it. No backend, nothing to sign up for.",
+    "copyright": "© ntdat104. Not affiliated with Discord.",
+    "icon": [
+      "icons/32x32.png",
+      "icons/128x128.png",
+      "icons/128x128@2x.png",
+      "icons/icon.icns",
+      "icons/icon.ico"
+    ],
+    "linux": {
+      "deb": {
+        "depends": ["gstreamer1.0-plugins-good", "gstreamer1.0-libav"]
+      }
+    }
+  },
+  "plugins": {
+    "deep-link": {
+      "desktop": {
+        "schemes": ["kdrive"]
+      }
+    }
+  }
+}

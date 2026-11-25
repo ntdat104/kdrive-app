@@ -1,0 +1,53 @@
+{
+  "name": "kdrive-app",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "oxlint",
+    "preview": "vite preview",
+    "typecheck": "tsc -b",
+    "tauri": "tauri",
+    "icons": "tauri icon app-icon.svg"
+  },
+  "dependencies": {
+    "@codemirror/language-data": "^6.5.2",
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/plus-jakarta-sans": "^5.3.0",
+    "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-clipboard-manager": "^2",
+    "@tauri-apps/plugin-deep-link": "^2",
+    "@tauri-apps/plugin-dialog": "^2",
+    "@tauri-apps/plugin-opener": "^2",
+    "@uiw/react-codemirror": "^4.25.12",
+    "clsx": "^2.1.1",
+    "dompurify": "^3.5.0",
+    "fflate": "^0.8.3",
+    "lucide-react": "^1.78.0",
+    "marked": "^18.2.1",
+    "mediabunny": "^1.66.2",
+    "motion": "^14.14.0",
+    "radix-ui": "^1.8.1",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "react-router": "^8.5.2",
+    "sonner": "^2.0.8",
+    "tailwind-merge": "^3.7.1",
+    "zustand": "^5.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@tauri-apps/cli": "^2",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.90.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6"
+  },
+  "description": "Kdrive desktop app (Tauri): an unlimited cloud drive that stores your files on Discord"
+}

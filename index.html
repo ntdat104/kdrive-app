@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Kdrive — ổ đĩa đám mây không giới hạn chạy bằng Discord. Tải lên, xem trước, sắp xếp và chia sẻ mọi loại tệp." />
+    <meta name="theme-color" content="#f0b90b" />
+    <title>Kdrive</title>
+    <script>
+      // Apply the saved theme before first paint to avoid a flash.
+      try {
+        var s = JSON.parse(localStorage.getItem('kdrive:settings') || localStorage.getItem('disbox:settings') || '{}').state || {};
+        var t = s.theme || 'system';
+        var dark = t === 'dark' || (t === 'system' && matchMedia('(prefers-color-scheme: dark)').matches);
+        document.documentElement.classList.toggle('dark', dark);
+        document.documentElement.lang = s.lang || 'vi';
+        document.documentElement.dataset.accent = s.accent || 'yellow';
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

@@ -1,0 +1,272 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+@import '@fontsource-variable/jetbrains-mono';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, monospace;
+
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-float: float 6s ease-in-out infinite;
+
+  @keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+  }
+  @keyframes menu-in {
+    from { opacity: 0; transform: scale(0.96) translateY(-4px); }
+    to { opacity: 1; transform: none; }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+}
+
+/* Semantic surface tokens, swapped per theme; brand ramp swapped per accent. */
+@theme inline {
+  --color-brand-50: var(--brand-50);
+  --color-brand-100: var(--brand-100);
+  --color-brand-200: var(--brand-200);
+  --color-brand-300: var(--brand-300);
+  --color-brand-400: var(--brand-400);
+  --color-brand-500: var(--brand-500);
+  --color-brand-600: var(--brand-600);
+  --color-brand-700: var(--brand-700);
+  --color-brand-800: var(--brand-800);
+  --color-brand-900: var(--brand-900);
+  --color-brand-950: var(--brand-950);
+
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-elevated: var(--elevated);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
+  --color-accent-soft: var(--accent-soft);
+}
+
+/*
+ * Accent ramps, chosen with <html data-accent="…">. 500 is the solid fill for buttons and
+ * badges. Light accents (yellow, orange, green) put dark text on it; the rest are shifted one
+ * step darker so white text stays readable. 700/800 are used for text on light surfaces.
+ */
+:root,
+:root[data-accent='yellow'] {
+  --brand-50: #fffbea;
+  --brand-100: #fef6d5;
+  --brand-200: #fdeaa0;
+  --brand-300: #fcd535;
+  --brand-400: #f8c81c;
+  --brand-500: #f0b90b;
+  --brand-600: #c99400;
+  --brand-700: #8f6a00;
+  --brand-800: #6b5000;
+  --brand-900: #4d3a00;
+  --brand-950: #2e2300;
+  --on-brand: #181a20;
+}
+
+:root[data-accent='orange'] {
+  --brand-50: #fff7ed;
+  --brand-100: #ffedd5;
+  --brand-200: #fed7aa;
+  --brand-300: #fdba74;
+  --brand-400: #fb923c;
+  --brand-500: #f97316;
+  --brand-600: #ea580c;
+  --brand-700: #c2410c;
+  --brand-800: #9a3412;
+  --brand-900: #7c2d12;
+  --brand-950: #431407;
+  --on-brand: #1c1008;
+}
+
+:root[data-accent='green'] {
+  --brand-50: #f0fdf4;
+  --brand-100: #dcfce7;
+  --brand-200: #bbf7d0;
+  --brand-300: #86efac;
+  --brand-400: #4ade80;
+  --brand-500: #22c55e;
+  --brand-600: #16a34a;
+  --brand-700: #15803d;
+  --brand-800: #166534;
+  --brand-900: #14532d;
+  --brand-950: #052e16;
+  --on-brand: #052e16;
+}
+
+:root[data-accent='blue'] {
+  --brand-50: #eff6ff;
+  --brand-100: #dbeafe;
+  --brand-200: #bfdbfe;
+  --brand-300: #60a5fa;
+  --brand-400: #3b82f6;
+  --brand-500: #2563eb;
+  --brand-600: #1d4ed8;
+  --brand-700: #1e40af;
+  --brand-800: #1e3a8a;
+  --brand-900: #172554;
+  --brand-950: #0f1a3d;
+  --on-brand: #ffffff;
+}
+
+:root[data-accent='red'] {
+  --brand-50: #fef2f2;
+  --brand-100: #fee2e2;
+  --brand-200: #fecaca;
+  --brand-300: #f87171;
+  --brand-400: #ef4444;
+  --brand-500: #dc2626;
+  --brand-600: #b91c1c;
+  --brand-700: #991b1b;
+  --brand-800: #7f1d1d;
+  --brand-900: #651515;
+  --brand-950: #450a0a;
+  --on-brand: #ffffff;
+}
+
+:root[data-accent='purple'] {
+  --brand-50: #faf5ff;
+  --brand-100: #f3e8ff;
+  --brand-200: #e9d5ff;
+  --brand-300: #c084fc;
+  --brand-400: #a855f7;
+  --brand-500: #9333ea;
+  --brand-600: #7e22ce;
+  --brand-700: #6b21a8;
+  --brand-800: #581c87;
+  --brand-900: #4a1772;
+  --brand-950: #3b0764;
+  --on-brand: #ffffff;
+}
+
+:root[data-accent='indigo'] {
+  --brand-50: #eef2ff;
+  --brand-100: #e0e7ff;
+  --brand-200: #c7d2fe;
+  --brand-300: #818cf8;
+  --brand-400: #7178f4;
+  --brand-500: #4f46e5;
+  --brand-600: #4338ca;
+  --brand-700: #3730a3;
+  --brand-800: #312e81;
+  --brand-900: #28245f;
+  --brand-950: #1e1b4b;
+  --on-brand: #ffffff;
+}
+
+:root {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --surface-2: #f5f5f5;
+  --elevated: #ffffff;
+  --line: #eaecef;
+  --line-strong: #d8dce1;
+  --fg: #1e2329;
+  --muted: #474d57;
+  --subtle: #707a8a;
+  --accent: var(--brand-500);
+  --accent-fg: var(--on-brand);
+  --accent-soft: color-mix(in srgb, var(--brand-500) 14%, transparent);
+  color-scheme: light;
+}
+
+.dark {
+  --bg: #0b0e11;
+  --surface: #181a20;
+  --surface-2: #1e2329;
+  --elevated: #1e2329;
+  --line: #2b3139;
+  --line-strong: #474d57;
+  --fg: #eaecef;
+  --muted: #b7bdc6;
+  --subtle: #848e9c;
+  --accent: var(--brand-500);
+  --accent-fg: var(--on-brand);
+  --accent-soft: color-mix(in srgb, var(--brand-500) 13%, transparent);
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+  body {
+    @apply bg-bg font-sans text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  ::selection {
+    @apply bg-brand-500/25;
+  }
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+  button:not(:disabled),
+  [role='button']:not([aria-disabled='true']) {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  .focus-ring {
+    @apply outline-none focus-visible:ring-2 focus-visible:ring-brand-500/60 focus-visible:ring-offset-2 focus-visible:ring-offset-bg;
+  }
+  .glass {
+    @apply border border-line/70 bg-surface/80 backdrop-blur-xl;
+  }
+  .skeleton {
+    background: linear-gradient(90deg, var(--surface-2) 25%, var(--line) 37%, var(--surface-2) 63%);
+    background-size: 400% 100%;
+    @apply animate-shimmer;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, var(--line) 1px, transparent 1px),
+      linear-gradient(to bottom, var(--line) 1px, transparent 1px);
+    background-size: 44px 44px;
+  }
+  .checkerboard {
+    background-color: var(--surface-2);
+    background-image:
+      linear-gradient(45deg, var(--line) 25%, transparent 25%),
+      linear-gradient(-45deg, var(--line) 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, var(--line) 75%),
+      linear-gradient(-45deg, transparent 75%, var(--line) 75%);
+    background-size: 20px 20px;
+    background-position: 0 0, 0 10px, 10px -10px, -10px 0;
+  }
+  .prose-md {
+    @apply text-[15px] leading-7 text-fg;
+  }
+  .prose-md :where(h1, h2, h3, h4) {
+    @apply mt-6 mb-3 font-bold tracking-tight;
+  }
+  .prose-md h1 { @apply text-3xl; }
+  .prose-md h2 { @apply border-b border-line pb-2 text-2xl; }
+  .prose-md h3 { @apply text-xl; }
+  .prose-md p { @apply my-3; }
+  .prose-md a { @apply text-brand-700 underline underline-offset-2 dark:text-brand-400; }
+  .prose-md :where(ul, ol) { @apply my-3 pl-6; }
+  .prose-md ul { @apply list-disc; }
+  .prose-md ol { @apply list-decimal; }
+  .prose-md code { @apply rounded bg-surface-2 px-1.5 py-0.5 font-mono text-[0.85em]; }
+  .prose-md pre { @apply my-4 overflow-auto rounded-xl border border-line bg-surface-2 p-4; }
+  .prose-md pre code { @apply bg-transparent p-0; }
+  .prose-md blockquote { @apply my-4 border-l-4 border-brand-400 pl-4 text-muted; }
+  .prose-md img { @apply my-4 max-w-full rounded-xl; }
+  .prose-md table { @apply my-4 w-full border-collapse text-sm; }
+  .prose-md :where(th, td) { @apply border border-line px-3 py-2 text-left; }
+  .prose-md hr { @apply my-8 border-line; }
+}
